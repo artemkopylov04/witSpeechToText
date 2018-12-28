@@ -10,8 +10,6 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 const witSpeechRequest = (audioBinary, callback) => {
 
-    //const buffer  = fs.readFileSync(wavPath);
-
     const headers = {
         'Authorization': 'Bearer ' + process.env.TOKEN,
         'Content-Type': 'audio/wav'
@@ -38,7 +36,6 @@ module.exports = async function speechToText(req, res) {
 
     const ogaPath = temp.path({ suffix: '.oga' });
     const wavPath = temp.path({ suffix: '.wav' });
-    //const wavPath = 'files/file223.wav';
 
     try {
         const data = await download(req.query.url);
