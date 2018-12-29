@@ -47,8 +47,6 @@ module.exports = async function speechToText(req, res) {
 
     try {
 
-        console.log(ffmpeg)
-
         await new Promise((resolve, reject) => {
             ffmpeg(ogaPath)
                 .toFormat('wav')
