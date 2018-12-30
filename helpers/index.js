@@ -86,4 +86,8 @@ module.exports = async function speechToText(req, res) {
     }
 
 
+    fs.unlink(ogaPath, () => {});
+    fs.unlink(wavPath, () => {});
+
+
 };

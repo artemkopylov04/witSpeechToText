@@ -10,12 +10,16 @@ const apiRouter   = require('./routes/api');
 
 const app = express();
 
-app.use(logger('prod'));
+app.set('view engine', 'pug');
+
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/api/wit/bot', apiRouter);
+
+app.get('/speechbot', (req, res) => res.send('It works!'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -30,7 +34,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(err);
 });
 
 module.exports = app;
